@@ -98,6 +98,12 @@ const locations = [
     "button functions": [restart, restart, restart],
     text: "You defeat the dragon! You win the game!",
   },
+  {
+    name: "easter egg",
+    "button text": ["2", "8", "Go town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a secret game.Pick a number above. Ten numver will be random chosen between 0 and 10. If the number you choose matches one of the random numbebrs, you win!",
+  },
 ];
 
 //initialize buttons
@@ -241,4 +247,20 @@ function restart() {
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
+}
+function easterEgg() {
+  update(locations[7]);
+}
+function pickTwo() {
+  pick(2);
+}
+function pickEight() {
+  pick(8);
+}
+function pick(guess) {
+  let numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.random() * 11);
+  }
+  text.innerText = "You pick " + guess + ". Here are the random number\n";
 }
